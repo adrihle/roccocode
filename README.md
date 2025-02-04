@@ -1,6 +1,6 @@
 # 🚀 ROCCO.CODE - Not another Neovim config
 
-![ROCCO.CODE Logo](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702264/PORTFOLIO/projects/pcg1eaznwrmmnvagcrrp.png)
+![ROCCO.CODE Logo](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702597/PORTFOLIO/projects/ad1stpu3e9hejlvizg15.avif)
 
 ## ✨ Introduction
 Welcome to **ROCCO.CODE**, a finely tuned Neovim configuration built for those who demand speed, flexibility, and an optimized workflow. Designed with **Lua and Lazy.nvim**, this setup is engineered to make web development (and your terminal life) faster, smoother, and just plain badass. 
