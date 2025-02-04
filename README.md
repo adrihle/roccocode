@@ -36,7 +36,7 @@ nvim +Lazy sync +qall
 ## 🎬 Preview
 Want a sneak peek? Here’s what ROCCO.CODE looks like in action:
 
-![Screenshot 1](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702332/PORTFOLIO/projects/rbi0bd45liwdxduk1ywf.png)
+![Screenshot 1](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702819/PORTFOLIO/projects/nu1gexuiwvanbau5ktzy.png)
 
 ## 🤝 Contributing
 Ideas? Bugs? Want to improve it? Fork the repo, make your changes, and send in a PR. Or just drop a star ⭐ if this made your life easier.
