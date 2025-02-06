@@ -1,8 +1,9 @@
 ------------------------------------------------
 --                                            --
---    This is a main configuration file for    --
---                    Roccocode                  --
+--    This is a main configuration file for   --
+--                    Roccocode               --
 --      Change variables which you need to    --
+--                into this folder            --
 --                                            --
 ------------------------------------------------
 
