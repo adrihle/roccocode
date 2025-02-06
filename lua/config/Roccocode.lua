@@ -11,7 +11,7 @@ local icons = require("utils.icons")
 local C = require('config.constants')
 
 Roccocode = {
-  _VERSION = "beta",
+  _VERSION = "1.0.0",
   theme = C.THEMES.TOKYONIGHT,
   colorscheme = C.THEMES.TOKYONIGHT,
   ui = {
