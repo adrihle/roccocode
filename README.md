@@ -27,11 +27,15 @@ Getting started is a breeze:
 mv ~/.config/nvim ~/.config/nvim.backup
 
 # Clone ROCCO.CODE
-git clone https://github.com/yourusername/rocco.code.git ~/.config/nvim
+git clone https://github.com/adrihle/roccocode.git ~/.config/nvim
 
 # Open Neovim and install everything
 nvim +Lazy sync +qall
 ```
+
+## 🏁 Commands
+
+Check with `<leader>fm` all the keybinds, or features.
 
 ## 🎬 Preview
 Want a sneak peek? Here’s what ROCCO.CODE looks like in action:

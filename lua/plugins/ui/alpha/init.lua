@@ -1,5 +1,5 @@
 local NAME = "goolord/alpha-nvim"
-local CONFIG_PATH =  "~/.config/nvim/lua/config/Roccocode.lua"
+local CONFIG_PATH =  "~/.config/nvim/lua/config/"
 
 local CONFIG = function()
   local present, alpha = pcall(require, "alpha")
@@ -59,9 +59,10 @@ local CONFIG = function()
 
   dashboard.section.buttons.val = {
     button("SPC s h", icons.fileRecent .. " " .. "Recents", "<cmd>Telescope oldfiles hidden=true<CR>", {}),
-    button("SPC / u", icons.container .. " " .. "Update Plugins", "<cmd>Lazy update<CR>", {}),
     button("SPC / i", icons.container .. " " .. "Manage Plugins", "<cmd>Lazy<CR>", {}),
-    button("SPC / c", icons.cog .. " " .. "Settings", "<cmd>e " .. CONFIG_PATH .. "<CR>", {}),
+    button("SPC / c", icons.cog .. " Settings", "<cmd>Telescope find_files cwd=" .. CONFIG_PATH .. "<CR>", {}),
+    button("SPC / n", icons.note .. " " .. "Notes", "<cmd>e ~/.config/nvim/notes.md<CR>", {}),
+    button("SPC / n", icons.robot .. " " .. "Readme", "<cmd>e ~/.config/nvim/README.md<CR>", {}),
     button("-", icons.exit .. " " .. "Exit", "<cmd>exit<CR>", {}),
   }
 
