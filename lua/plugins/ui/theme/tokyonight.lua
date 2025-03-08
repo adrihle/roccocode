@@ -46,11 +46,12 @@ local applyConfig = function()
       colors.fg_float = fg
       colors.fg_gutter = fg_gutter
       colors.fg_sidebar = fg_dark
-      colors.bg_winbar = transparent and colors.none or bg_search
     end,
   }
 
   vim.cmd 'colorscheme tokyonight'
+  -- This is the background of the very top path line
+  vim.cmd [[highlight TabLineFill guibg=NONE ctermbg=NONE]]
 
 
   -- -- ╭──────────────────────────────────────────────────────────╮
