@@ -1,6 +1,5 @@
 local NAME = 'folke/tokyonight.nvim'
 
--- auxiliar variables
 local MAIN_COLOR = Roccocode.ui.colors.primary
 local SECONDARY_COLOR = Roccocode.ui.colors.secondary
 local NONE = "None"
