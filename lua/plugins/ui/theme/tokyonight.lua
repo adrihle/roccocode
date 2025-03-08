@@ -13,15 +13,15 @@ local applyConfig = function()
 
   local transparent = true
 
-  local bg = '#011628'
-  local bg_dark = '#011423'
-  local bg_highlight = '#143652'
-  local bg_search = '#0A64AC'
-  local bg_visual = '#275378'
-  local fg = '#CBE0F0'
-  local fg_dark = '#B4D0E9'
-  local fg_gutter = '#627E97'
-  local border = '#547998'
+  local bg = Roccocode.ui.colors.bg
+  local bg_dark = Roccocode.ui.colors.bg_dark
+  local bg_highlight = Roccocode.ui.colors.bg_highlight
+  local bg_search = Roccocode.ui.colors.bg_search
+  local bg_visual = Roccocode.ui.colors.bg_visual
+  local fg = Roccocode.ui.colors.fg
+  local fg_dark = Roccocode.ui.colors.fg_dark
+  local fg_gutter = Roccocode.ui.colors.fg_gutter
+  local border = Roccocode.ui.colors.border
 
   tokyonight.setup {
     style = 'night',
