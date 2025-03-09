@@ -50,6 +50,7 @@ Roccocode = {
     },
     mason = {
       ensure_installed = {
+        "emmet_ls",
         "bashls",
         "cssls",
         "eslint",

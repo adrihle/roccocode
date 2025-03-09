@@ -90,6 +90,17 @@ local CONFIG = function()
     capabilities = capabilities,
     handlers = handlers,
   })
+
+  lspconfig.emmet_ls.setup({
+    filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
+    init_options = {
+      showexpandedabbreviation = "always",
+      syntaxProfiles = {
+        jsx = "html",
+        tsx = "html",
+      },
+    },
+  })
 end
 
 return {

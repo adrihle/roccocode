@@ -9,7 +9,7 @@ local DEPENDENCIES = {
   "hrsh7th/cmp-calc",
   "saadparwaiz1/cmp_luasnip",
   { "onsails/lspkind-nvim" },
-  { "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+  { "L3MON4D3/LuaSnip",    version = "v2.*", build = "make install_jsregexp" },
 }
 
 local CONFIG = function()
@@ -265,6 +265,7 @@ local CONFIG = function()
       { name = "copilot",     priority = 9 },
       { name = "cmp_tabnine", priority = 7 },
       { name = "luasnip",     priority = 7 },
+      { name = "emmet_ls",    priority = 6 },
       {
         name = "buffer",
         priority = 7,
