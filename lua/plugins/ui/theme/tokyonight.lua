@@ -29,6 +29,7 @@ local applyConfig = function()
       sidebars = transparent and 'transparent' or 'dark',
       floats = transparent and 'transparent' or 'dark',
     },
+    sidebars = { "qf", "help" },
     on_colors = function(colors)
       colors.bg = bg
       colors.bg_dark = transparent and colors.none or bg_dark
@@ -45,6 +46,30 @@ local applyConfig = function()
       colors.fg_float = fg
       colors.fg_gutter = fg_gutter
       colors.fg_sidebar = fg_dark
+    end,
+    on_highlights = function(color, hl)
+      hl.TelescopeTitle = {
+        fg = SECONDARY_COLOR,
+      }
+      hl.TelescopeNormal = {
+        bg = NONE,
+        fg = NONE,
+      }
+      hl.TelescopeNormal = {
+        bg = NONE,
+        fg = NONE,
+      }
+      hl.TelescopeBorder = {
+        bg = NONE,
+        fg = MAIN_COLOR,
+        blend = 0.4
+      }
+      hl.TelescopeMatching = {
+        fg = SECONDARY_COLOR,
+      }
+      hl.MsgArea = {
+        fg = color.fg_dark,
+      }
     end,
   }
 
