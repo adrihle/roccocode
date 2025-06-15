@@ -101,6 +101,28 @@ local CONFIG = function()
       },
     },
   })
+
+  lspconfig.dartls.setup({
+    cmd = { "dart", "language-server", "--protocol=lsp" },
+    filetypes = { "dart" },
+    init_options = {
+      closingLabels = true,
+      flutterOutline = true,
+      onlyAnalyzeProjectsWithOpenFiles = true,
+      outline = true,
+      suggestFromUnimportedLibraries = true,
+    },
+    settings = {
+      dart = {
+        completeFunctionCalls = true,
+        showTodos = true,
+      },
+    },
+    on_attach = function(client, bufnr)
+      -- tus keymaps, autocommands, etc.
+    end,
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  })
 end
 
 return {

@@ -60,7 +60,8 @@ Roccocode = {
         "ts_ls",
         "pyright",
         "dockerls",
-        "yamlls"
+        "yamlls",
+        "ruff",
       }
     },
     treesitter = {
@@ -81,7 +82,7 @@ Roccocode = {
         "markdown",
         "prisma",
         "vim",
-        "python",
+        "python"
       },
     },
     formatters = {
