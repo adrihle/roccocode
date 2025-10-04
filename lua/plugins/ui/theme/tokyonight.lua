@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local NAME = 'folke/tokyonight.nvim'
 
 local MAIN_COLOR = Roccocode.ui.colors.primary
@@ -154,6 +155,8 @@ local applyStyles = function()
 
     -- Floats/Windows
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = NONE, fg = NONE })
+    vim.api.nvim_set_hl(0, "SagaNormal", { bg = "#1e1e2e", fg = SECONDARY_COLOR })
+    vim.api.nvim_set_hl(0, "SagaFinderNormal", { fg = "#c0c8d8", bg = "NONE" })
     vim.api.nvim_set_hl(0, "FloatBorder", { bg = NONE, fg = MAIN_COLOR })
     vim.api.nvim_set_hl(0, "WhichKeyFloat", { bg = NONE, fg = MAIN_COLOR })
     vim.api.nvim_set_hl(0, "BufferTabpageFill", { fg = NONE })
