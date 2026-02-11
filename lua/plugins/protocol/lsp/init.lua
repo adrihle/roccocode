@@ -8,7 +8,6 @@ local DEPENDENCIES = {
 }
 
 local CONFIG = function()
-  local lspconfig = require("lspconfig")
   local typescript_ok, typescript = pcall(require, "typescript")
   local SERVERS = require('plugins.protocol.servers')
 
@@ -17,36 +16,37 @@ local CONFIG = function()
       silent = true,
       border = Roccocode.ui.float.border,
     }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = Roccocode.ui.float.border }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      border = Roccocode.ui.float.border
+    }),
     ["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics,
       { virtual_text = Roccocode.lsp.virtual_text }
     ),
   }
 
-  local function on_attach()
-    -- set up buffer keymaps, etc.
-  end
+  local function on_attach() end
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
   }
 
-  lspconfig.lua_ls.setup({
+  -- LUA
+  vim.lsp.config("lua_ls", {
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
     settings = SERVERS.LUA.settings,
   })
+  vim.lsp.enable("lua_ls")
 
+  -- TYPESCRIPT
   if typescript_ok then
     typescript.setup({
-      disable_commands = false, -- prevent the plugin from creating Vim commands
-      debug = false,            -- enable debug logging for commands
-      -- LSP Config options
+      disable_commands = false,
+      debug = false,
       server = {
         capabilities = SERVERS.TYPESCRIPT.capabilities,
         handlers = SERVERS.TYPESCRIPT.handlers,
@@ -56,42 +56,52 @@ local CONFIG = function()
     })
   end
 
-  lspconfig.eslint.setup({
+  -- ESLINT
+  vim.lsp.config("eslint", {
     capabilities = capabilities,
     handlers = handlers,
     on_attach = SERVERS.ESLINT.on_attach,
     settings = SERVERS.ESLINT.settings,
   })
+  vim.lsp.enable("eslint")
 
-  lspconfig.jsonls.setup({
+  -- JSON
+  vim.lsp.config("jsonls", {
     capabilities = capabilities,
     handlers = handlers,
     on_attach = on_attach,
     settings = SERVERS.JSON.settings,
   })
+  vim.lsp.enable("jsonls")
 
-  lspconfig.pyright.setup({
+  -- PYTHON
+  vim.lsp.config("pyright", {
     handlers = handlers,
-    -- filetypes = { "python" },
     on_attach = on_attach,
     capabilities = capabilities,
     settings = SERVERS.PYTHON.settings,
   })
+  vim.lsp.enable("pyright")
 
-  lspconfig.cssls.setup({
+  -- CSS
+  vim.lsp.config("cssls", {
     capabilities = capabilities,
     handlers = handlers,
     on_attach = SERVERS.CSS.on_attach,
     settings = SERVERS.CSS.settings,
   })
+  vim.lsp.enable("cssls")
 
-  lspconfig.bashls.setup({
+  -- BASH
+  vim.lsp.config("bashls", {
     on_attach = on_attach,
     capabilities = capabilities,
     handlers = handlers,
   })
+  vim.lsp.enable("bashls")
 
-  lspconfig.emmet_ls.setup({
+  -- EMMET
+  vim.lsp.config("emmet_ls", {
     filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
     init_options = {
       showexpandedabbreviation = "always",
@@ -102,7 +112,7 @@ local CONFIG = function()
     },
   })
 
-  lspconfig.dartls.setup({
+  vim.lsp.config("dartls", {
     cmd = { "dart", "language-server", "--protocol=lsp" },
     filetypes = { "dart" },
     init_options = {
@@ -123,6 +133,8 @@ local CONFIG = function()
     end,
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
   })
+
+  vim.lsp.enable("emmet_ls")
 end
 
 return {
