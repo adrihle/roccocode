@@ -18,13 +18,15 @@ local FINDER   = require('plugins.finder')
 local UI       = require('plugins.ui')
 local PROTOCOL = require('plugins.protocol')
 local GIT      = require('plugins.git')
+local AI       = require('plugins.ai')
 
 local PLUGINS  = TABLES.table_merge(
   CORE,
   UI,
   FINDER,
   PROTOCOL,
-  GIT
+  GIT,
+  AI
 )
 
 require("lazy").setup({ PLUGINS }, {

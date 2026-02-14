@@ -74,6 +74,13 @@ local CONFIG = function()
   })
   vim.lsp.enable("jsonls")
 
+  vim.lsp.config('ts_ls', {
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end,
+  })
+
   -- PYTHON
   vim.lsp.config("pyright", {
     handlers = handlers,

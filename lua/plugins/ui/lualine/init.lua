@@ -38,6 +38,12 @@ local CONFIG = function()
 			padding = 0,
 		}
 
+		local lualine_z = { "progress" }
+		local opencode_status_ok, opencode = pcall(require, "opencode")
+		if opencode_status_ok and opencode.statusline then
+			table.insert(lualine_z, opencode.statusline)
+		end
+
 		lualine.setup({
 			options = {
 				globalstatus = true,
@@ -54,7 +60,7 @@ local CONFIG = function()
 				lualine_c = { diff },
 				lualine_x = { diagnostics, filetype },
 				lualine_y = { location },
-				lualine_z = { "progress" },
+				lualine_z = lualine_z,
 			},
 		})
 end
