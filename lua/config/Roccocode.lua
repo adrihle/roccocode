@@ -80,6 +80,7 @@ Roccocode = {
         "json5",
         "lua",
         "markdown",
+        "markdown_inline",
         "prisma",
         "vim",
         "python"

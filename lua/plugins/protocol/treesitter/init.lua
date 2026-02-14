@@ -84,6 +84,12 @@ local CONFIG = function()
   }
 end
 
+vim.filetype.add({
+  extension = {
+    mdx = "markdown"
+  }
+});
+
 return {
   {
     NAME,
