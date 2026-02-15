@@ -1,52 +1,98 @@
-# 🚀 ROCCO.CODE - Not another Neovim config
+# ROCCO.CODE
 
 ![ROCCO.CODE Logo](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702597/PORTFOLIO/projects/ad1stpu3e9hejlvizg15.avif)
 
-## ✨ Introduction
-Welcome to **ROCCO.CODE**, a finely tuned Neovim configuration built for those who demand speed, flexibility, and an optimized workflow. Designed with **Lua and Lazy.nvim**, this setup is engineered to make web development (and your terminal life) faster, smoother, and just plain badass. 
+A personal Neovim setup focused on speed, clarity, and low-friction coding.
 
-## 💡 The Why
-Great tools come from necessity. **ROCCO.CODE** wasn’t built overnight—it’s a reflection of a journey, of refining, tweaking, and pushing through long nights of coding. It’s here to do one thing: **help developers focus on what truly matters—writing great code without friction**. 
+- Fast startup with `lazy.nvim`
+- Modern LSP stack (`nvim-lspconfig`, `typescript-tools.nvim`, `none-ls.nvim`)
+- Practical UI + keymaps for daily web/backend work
+- Hybrid AI workflow with `opencode.nvim` (external session + per-project float)
 
-This project is a nod to persistence, to the ones who keep building, even when things get tough. Inspired by Rocco, my steadfast companion through thick and thin, this is for those who embrace the grind and come out stronger. 
+## Why this config exists
 
-## 🚀 Features
-✅ **Supercharged Neovim for Web Development**  
-✅ **Lightning-fast startup**—because patience is overrated  
-✅ **Lazy.nvim** for streamlined plugin management  
-✅ **Intuitive keybindings**—your fingers will thank you  
-✅ **SSH & terminal integrations**—because we do things remotely too  
-✅ **Enhanced LSP, Treesitter & Autocomplete**  
-✅ **A sleek UI that doesn’t distract you from the code**  
+This is not a "collect every plugin" config. It is intentionally curated to stay fast, stable, and useful in real projects.
 
-## 📦 Installation
-Getting started is a breeze:
+The goal is simple: keep your hands on the keyboard and your attention on the code.
+
+## Stack overview
+
+- **Plugin manager:** `lazy.nvim`
+- **LSP:** native Neovim LSP + `nvim-lspconfig`
+- **TypeScript:** `pmizio/typescript-tools.nvim`
+- **Formatting/lint integration:** `nvimtools/none-ls.nvim` + `mason-null-ls.nvim`
+- **Syntax/highlighting:** Treesitter
+- **Finder:** Telescope
+- **UI:** Tokyonight, Lualine, NvimTree, Notify, Snacks
+- **AI:** `opencode.nvim` with hybrid mode support
+
+## Installation
 
 ```sh
-# Backup your existing config (if needed)
+# Backup existing Neovim config (optional)
 mv ~/.config/nvim ~/.config/nvim.backup
 
-# Clone ROCCO.CODE
+# Clone this repo
 git clone https://github.com/adrihle/roccocode.git ~/.config/nvim
 
-# Open Neovim and install everything
-nvim +Lazy sync +qall
+# Install and sync plugins
+nvim +Lazy\ sync +qall
 ```
 
-## 🏁 Commands
+## First-run checks
 
-Check with `<leader>fm` all the keybinds, or features.
+```sh
+# Basic startup validation
+nvim --headless +qa
 
-## 🎬 Preview
-Want a sneak peek? Here’s what ROCCO.CODE looks like in action:
+# Optional health checks
+nvim --headless '+checkhealth lspconfig' '+checkhealth opencode' '+qa'
+```
+
+## Keymaps you will actually use
+
+- `<leader>fm` -> open keymap index (`nvim-mapper`)
+- `<leader>lf` -> format current buffer
+- `<leader>la` -> code actions
+- `<leader>ot` -> toggle/connect Opencode session
+- `<leader>oa` -> ask Opencode with current context (`@this`)
+- `<leader>oe` -> explain selected code
+
+## Opencode workflow (hybrid)
+
+This config supports two AI interaction modes:
+
+1. **External server mode** (great for your main project)
+   - Start Opencode in a dedicated terminal tab.
+   - Open Neovim with `OPENCODE_PORT` exported for that instance.
+2. **Floating local mode** (great for secondary projects)
+   - Open Neovim normally (without `OPENCODE_PORT`).
+   - `<leader>ot` opens Opencode in a floating terminal via Snacks.
+
+This gives you strong per-project isolation while keeping a powerful external workflow for deep sessions.
+
+## Project structure
+
+- `init.lua` -> entry point
+- `lua/config` -> core settings and globals (`Roccocode`)
+- `lua/plugins` -> plugin specs grouped by domain (`core`, `ui`, `protocol`, `finder`, `git`, `ai`)
+- `lua/keybinds` -> editor-level keymaps
+- `lua/utils` -> shared Lua helpers
+
+## Preview
 
 ![Screenshot 1](https://res.cloudinary.com/dlj66ezaw/image/upload/v1738702819/PORTFOLIO/projects/nu1gexuiwvanbau5ktzy.png)
 
-## 🤝 Contributing
-Ideas? Bugs? Want to improve it? Fork the repo, make your changes, and send in a PR. Or just drop a star ⭐ if this made your life easier.
+## Contributing
 
-## 📜 License
-MIT License—use it, modify it, break it, improve it. Just don’t blame me if your dog learns to code and outshines you.
+Issues and PRs are welcome.
+
+If you want to propose changes, keep them focused and aligned with the core principle: performance + clarity over feature bloat.
+
+## License
+
+MIT.
 
 ---
-_This project is dedicated to Rocco. Always watching, always inspiring. 🐾_
+
+Dedicated to Rocco. Always watching, always inspiring.
