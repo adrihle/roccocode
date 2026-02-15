@@ -28,7 +28,7 @@ MAPPER.Map({
 -- })
 
 MAPPER.Map({
-  keybind = getkeybind('-'),
+  keybind = getkeybind('a'),
   command = '<cmd>lua vim.lsp.buf.code_action()<CR>',
   category = CATEGORY,
   id = getid('code_action'),
@@ -54,7 +54,7 @@ MAPPER.Map({
 MAPPER.Map({
   mode = C.MAPPING.MODE.VISUAL,
   keybind = getkeybind('f'),
-  command = "<cmd>'<.'>lua vim.lsp.buf.range_formatting()<CR>",
+  command = "<cmd>lua vim.lsp.buf.format({ async = true, range = { ['start'] = vim.api.nvim_buf_get_mark(0, '<'), ['end'] = vim.api.nvim_buf_get_mark(0, '>') } })<CR>",
   category = CATEGORY,
   id = getid('range_format'),
   description = 'Format range of code'
@@ -93,4 +93,3 @@ MAPPER.Map({
   id = getid('toggle_save_format'),
   description = 'Toggle auto format on save'
 })
-

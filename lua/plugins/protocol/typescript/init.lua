@@ -17,10 +17,6 @@ local CONFIG = function()
       border = Roccocode.ui.float.border,
     }),
     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = Roccocode.ui.float.border }),
-    ["textDocument/publishDiagnostics"] = vim.lsp.with(
-      vim.lsp.diagnostic.on_publish_diagnostics,
-      { virtual_text = Roccocode.lsp.virtual_text }
-    ),
     ["textDocument/definition"] = function(err, result, method, ...)
       if vim.tbl_islist(result) and #result > 1 then
         local filtered_result = filter(result, filterReactDTS)
@@ -31,7 +27,17 @@ local CONFIG = function()
     end,
   }
 
+  local on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+
+    if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+  end
+
   require("typescript-tools").setup({
+    on_attach = on_attach,
     handlers = handlers,
     settings = {
       separate_diagnostic_server = true,
@@ -50,7 +56,6 @@ return {
     dependencies = DEPENDENCIES,
     config = CONFIG,
     event = { "BufReadPre", "BufNewFile" },
-		ft = { "typescript", "typescriptreact" },
+    ft = { "typescript", "typescriptreact" },
   }
 }
-

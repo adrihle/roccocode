@@ -1,4 +1,4 @@
-local NAME = 'nvimdev/lspsaga.nvim';
+local NAME = 'nvimdev/lspsaga.nvim'
 
 local DEPENDENCIES = {
   'nvim-treesitter/nvim-treesitter', -- optional
@@ -8,7 +8,7 @@ local DEPENDENCIES = {
 local CONFIG = function()
   local saga_ok, saga = pcall(require, "lspsaga")
 
-  if (not saga_ok) then
+  if not saga_ok then
     return
   end
 

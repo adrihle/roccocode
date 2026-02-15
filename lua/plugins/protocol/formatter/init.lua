@@ -1,4 +1,4 @@
-local NAME = 'jose-elias-alvarez/null-ls.nvim'
+local NAME = 'nvimtools/none-ls.nvim'
 
 local DEPENDENCIES = {
   {
@@ -22,9 +22,9 @@ local CONFIG = function()
     return
   end
 
-  -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+  -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/formatting
   local formatting = null_ls.builtins.formatting
-  -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+  -- https://github.com/nvimtools/none-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
   local diagnostics = null_ls.builtins.diagnostics
 
   -- Setting up border for NullLsInfo like lspconfig ui
@@ -39,7 +39,7 @@ local CONFIG = function()
         extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
       }),
       formatting.black.with({
-        extra_args = {"--line-lenght=120"}
+        extra_args = { "--line-length=120" }
       }),
       formatting.isort,
       formatting.stylua,
@@ -57,7 +57,7 @@ return {
     keys = {
       {
         "<leader>lf",
-        "<cmd>lua vim.lsp.buf.format{ async = true }<cr>",
+        "<cmd>lua vim.lsp.buf.format({ async = true })<cr>",
         desc = "Format",
       },
       { "<leader>ln", "<cmd>NullLsInfo<cr>", desc = "NullLsInfo" },

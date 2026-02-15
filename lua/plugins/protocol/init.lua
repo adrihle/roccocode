@@ -7,7 +7,6 @@ local TYPESCRIPT = require('plugins.protocol.typescript')
 local TREESITTER = require('plugins.protocol.treesitter')
 local FORMATTER = require('plugins.protocol.formatter')
 local SAGA = require('plugins.protocol.saga')
-local INLAYHINTS = require('plugins.protocol.lsp-inlinehint')
 local LUASNIP = require('plugins.protocol.luasnip')
 
 return TABLES.table_merge(
@@ -18,6 +17,5 @@ return TABLES.table_merge(
   TYPESCRIPT,
   TREESITTER,
   FORMATTER,
-  SAGA,
-  INLAYHINTS
+  SAGA
 )

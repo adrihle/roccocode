@@ -82,6 +82,6 @@ MAPPER.Map({
   keybind = get_keybind('r'),
   command = get_command('rename'),
   category = CATEGORY,
-  id = get_keybind('rename'),
+  id = get_id('rename'),
   description = 'Rename variable'
 })

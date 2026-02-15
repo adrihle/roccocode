@@ -1,6 +1,5 @@
 local SERVERS = {
   LUA = require('plugins.protocol.servers.lua_ls'),
-  TYPESCRIPT = require('plugins.protocol.servers.typescript'),
   HTML = require('plugins.protocol.servers.html'),
   CSS = require('plugins.protocol.servers.cssls'),
   JSON = require('plugins.protocol.servers.jsonls'),

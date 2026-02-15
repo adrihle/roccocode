@@ -1,34 +1,15 @@
 local opts = { silent = true, noremap = true }
-local is_toggling = false
 
-local function safe_toggle()
-  if is_toggling then
-    return
-  end
-
-  is_toggling = true
-  pcall(function()
+local function toggle_or_connect()
+  if tonumber(vim.env.OPENCODE_PORT) then
+    require('opencode').select_server()
+  else
     require('opencode').toggle()
-  end)
-
-  vim.defer_fn(function()
-    is_toggling = false
-  end, 150)
+  end
 end
 
 local function ask_this()
-  require('opencode').start()
-  vim.schedule(function()
-    require('opencode').ask('@this ')
-  end)
-end
-
-local function toggle_opencode_from_terminal()
-  local esc = vim.api.nvim_replace_termcodes('<C-\\><C-n>', true, false, true)
-  vim.api.nvim_feedkeys(esc, 'n', false)
-  vim.schedule(function()
-    safe_toggle()
-  end)
+  require('opencode').ask('@this ')
 end
 
 vim.keymap.set({ 'n', 'x' }, '<leader>oa', ask_this, vim.tbl_extend('force', opts, {
@@ -45,20 +26,20 @@ end, vim.tbl_extend('force', opts, {
   desc = 'Open opencode actions'
 }))
 
-vim.keymap.set('n', '<leader>ot', function()
-  safe_toggle()
+vim.keymap.set('n', '<leader>ot', toggle_or_connect, vim.tbl_extend('force', opts, {
+  desc = 'Toggle or connect opencode'
+}))
+
+vim.keymap.set('n', '<leader>os', function()
+  require('opencode').select_server()
 end, vim.tbl_extend('force', opts, {
-  desc = 'Toggle opencode terminal'
+  desc = 'Select opencode server'
 }))
 
 vim.keymap.set({ 'n', 'x' }, '<leader>oe', function()
   require('opencode').prompt('Explain @this', { submit = true })
 end, vim.tbl_extend('force', opts, {
   desc = 'Explain selected code with opencode'
-}))
-
-vim.keymap.set('t', '<leader>ot', toggle_opencode_from_terminal, vim.tbl_extend('force', opts, {
-  desc = 'Toggle opencode terminal'
 }))
 
 vim.keymap.set('n', '<leader>ok', function()

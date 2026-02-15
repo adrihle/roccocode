@@ -5,6 +5,7 @@ local TREE = require('plugins.ui.tree')
 local STATUS_LINE = require('plugins.ui.lualine')
 local THEME = require('plugins.ui.theme')
 local NOTIFY = require('plugins.ui.notify')
+local SNACKS = require('plugins.ui.snacks')
 local COLORIZED = require('plugins.ui.colorized')
 
 return TABLES.table_merge(
@@ -13,5 +14,6 @@ return TABLES.table_merge(
   TREE,
   STATUS_LINE,
   NOTIFY,
+  SNACKS,
   COLORIZED
 )
