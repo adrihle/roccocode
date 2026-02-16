@@ -1,8 +1,7 @@
 local M = {}
 
 local on_attach = function(client, bufnr)
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
+  client.server_capabilities.documentFormattingProvider = true
   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
@@ -22,7 +21,7 @@ M.settings = {
     enable = false,
     mode = "all"
   },
-  format = false,
+  format = true,
   nodePath = "",
   onIgnoredFiles = "off",
   packageManager = "npm",
