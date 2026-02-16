@@ -32,7 +32,7 @@ local CONFIG = function()
     client.server_capabilities.documentRangeFormattingProvider = false
 
     if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      pcall(vim.lsp.inlay_hint.enable, false, { bufnr = bufnr })
     end
   end
 

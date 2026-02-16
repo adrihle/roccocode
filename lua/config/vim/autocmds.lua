@@ -10,3 +10,14 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", "*.md", "*.json" },
   command = "setlocal conceallevel=0" })
 
+if vim.lsp.inlay_hint then
+  vim.lsp.inlay_hint.enable(false)
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    if vim.lsp.inlay_hint then
+      pcall(vim.lsp.inlay_hint.enable, false, { bufnr = args.buf })
+    end
+  end,
+})
